@@ -2,41 +2,41 @@
 
 public static class Extensions
 {
-	public static IReadOnlyList<TKey> ToDependencyOrder<TItem, TKey>(
-		this IEnumerable<TItem> items, 
-		Func<TItem, TKey> keySelector,
-		Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull
-	{
-		ThrowIfCircular(items);
+    public static IReadOnlyList<TKey> ToDependencyOrder<TItem, TKey>(
+        this IEnumerable<TItem> items,
+        Func<TItem, TKey> keySelector,
+        Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull
+    {
+        ThrowIfCircular(items);
 
-		HashSet<TKey> results = [];
+        HashSet<TKey> results = [];
 
-		var count = items.Count();
-		var rootItems = items.Where(item => !childKeySelector(item).Any())?.ToArray() ?? [];
-		var childItems = items.Except(rootItems).ToArray();
+        var count = items.Count();
+        var rootItems = items.Where(item => !childKeySelector(item).Any())?.ToArray() ?? [];
+        var childItems = items.Except(rootItems).ToArray();
 
-		// the root items can be added to output right away
-		foreach (var item in rootItems) results.Add(keySelector(item));
+        // the root items can be added to output right away
+        foreach (var item in rootItems) results.Add(keySelector(item));
 
-		while (results.Count < count)
-		{
+        while (results.Count < count)
+        {
             foreach (var item in childItems)
             {
-				var dependencies = childKeySelector(item).ToArray();
+                var dependencies = childKeySelector(item).ToArray();
                 var key = keySelector(item);
-				// if all the dependencies are in the output, we can add this child
+                // if all the dependencies are in the output, we can add this child
 
-				var missing = dependencies.Except(results).ToArray();
+                var missing = dependencies.Except(results).ToArray();
 
                 if (dependencies.All(results.Contains) && !results.Contains(key))
-                {                    
-                    results.Add(key);                    
+                {
+                    results.Add(key);
                 }
             }
         }
-		
-		return [.. results];
-	}
+
+        return [.. results];
+    }
 
     private static void ThrowIfCircular<TItem>(IEnumerable<TItem> items)
     {

@@ -27,7 +27,7 @@ public class DependencyCases
             "DomainModels",
             "Services",
             "PublicApi",
-            "WebApp"            
+            "WebApp"
         ];
 
         Assert.IsTrue(actual.SequenceEqual(expected));
