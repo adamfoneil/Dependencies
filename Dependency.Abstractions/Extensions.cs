@@ -8,6 +8,7 @@ public static class Extensions
         Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull
     {
         ThrowIfCircular(items);
+        ThrowAnyUnrecognized(items);
 
         HashSet<TKey> results = [];
 
@@ -38,8 +39,13 @@ public static class Extensions
         return [.. results];
     }
 
+    private static void ThrowAnyUnrecognized<TItem>(IEnumerable<TItem> items)
+    {
+        // todo: this is for when I misspelled "DomainModels "
+    }
+
     private static void ThrowIfCircular<TItem>(IEnumerable<TItem> items)
     {
-        // not done yet
+        // todo: not done yet
     }
 }
