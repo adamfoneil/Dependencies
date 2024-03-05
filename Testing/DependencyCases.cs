@@ -79,8 +79,7 @@ public class DependencyCases
         }
         catch (ArgumentException exc)
         {
-            // success
-            Debug.WriteLine(exc.Message);
+            Assert.IsTrue(exc.Message.Equals("Circular reference found: A"));            
             return;
         }
 
