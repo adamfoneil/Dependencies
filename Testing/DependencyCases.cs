@@ -1,4 +1,5 @@
 using Dependency.Abstractions;
+using System.Diagnostics;
 
 namespace Testing;
 
@@ -76,11 +77,13 @@ public class DependencyCases
         {
             var order = items.ToDependencyOrder(item => item.Name, item => item.Children);
         }
-        catch (Exception)
+        catch (ArgumentException exc)
         {
-
-            throw;
+            // success
+            Debug.WriteLine(exc.Message);
+            return;
         }
-        
+
+        Assert.Fail("shouldn't reach this point");
     }
 }
