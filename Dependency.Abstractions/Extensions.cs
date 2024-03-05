@@ -2,49 +2,84 @@
 
 public static class Extensions
 {
-    public static IReadOnlyList<TKey> ToDependencyOrder<TItem, TKey>(
+    public static (IReadOnlyList<TKey> Valid, IReadOnlyList<TKey> Invalid) ToDependencyOrder<TItem, TKey>(
         this IEnumerable<TItem> items,
         Func<TItem, TKey> keySelector,
         Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull
     {
-        ThrowIfCircular(items);
-        ThrowAnyUnrecognized(items);
+        ThrowIfCircular(items, keySelector, childKeySelector);
+
+        var (recognized, unrecognized) = Validate(items, keySelector, childKeySelector);
 
         HashSet<TKey> results = [];
-
-        var count = items.Count();
+        
         var rootItems = items.Where(item => !childKeySelector(item).Any())?.ToArray() ?? [];
         var childItems = items.Except(rootItems).ToArray();
 
         // the root items can be added to output right away
         foreach (var item in rootItems) results.Add(keySelector(item));
 
-        while (results.Count < count)
+        while (results.Count < recognized.Count)
         {
             foreach (var item in childItems)
             {
-                var dependencies = childKeySelector(item).ToArray();
+                var dependencies = childKeySelector(item).Except(unrecognized).ToArray();
                 var key = keySelector(item);
-                // if all the dependencies are in the output, we can add this child
-
+                
+                // this was just a little debug helper during development
                 var missing = dependencies.Except(results).ToArray();
 
-                if (dependencies.All(results.Contains) && !results.Contains(key))
+                // if all the dependencies are in the output, we can add this child
+                if (dependencies.All(results.Contains))
                 {
-                    results.Add(key);
+                    if (results.Add(key))
+                    {
+                        // if we have everything, we can stop
+                        if (results.Count == recognized.Count) break;
+                    }                    
                 }
             }
         }
 
-        return [.. results];
+        return ([.. results], unrecognized);
     }
 
-    private static void ThrowAnyUnrecognized<TItem>(IEnumerable<TItem> items)
+    /// <summary>
+    /// returns only the valid/recognized TKeys
+    /// </summary>
+    public static IReadOnlyList<TKey> ToValidDependencyOrder<TItem, TKey>(
+        this IEnumerable<TItem> items,
+        Func<TItem, TKey> keySelector,
+        Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull =>
+        ToDependencyOrder(items, keySelector, childKeySelector).Valid;
+
+    /// <summary>
+    /// a dependency graph may have a combination of valid or "recognized" keys,
+    /// along with a set of possible invalid or "unrecognized" keys. The unrecognized keys
+    /// need to be excluded from any subsequent analysis
+    /// </summary>
+    public static (IReadOnlyList<TKey> Recognized, IReadOnlyList<TKey> Unrecogized) Validate<TItem, TKey>(
+        IEnumerable<TItem> items, 
+        Func<TItem, TKey> keySelector,
+        Func<TItem, IEnumerable<TKey>> childKeySelector)
     {
-        // todo: this is for when I misspelled "DomainModels "
+        var allReferences = items.SelectMany(childKeySelector).Distinct();
+        var allReferenced = items.Select(keySelector).Distinct();
+
+        return 
+        (
+            allReferenced.Concat(allReferences.Intersect(allReferenced)).Distinct().ToArray(),
+            allReferences.Except(allReferenced).ToArray()
+        );
     }
 
-    private static void ThrowIfCircular<TItem>(IEnumerable<TItem> items)
+    /// <summary>
+    /// circular dependencies mess everything up, so you have to catch those before doing anything
+    /// </summary>
+    private static void ThrowIfCircular<TItem, TKey>(
+        IEnumerable<TItem> items,
+        Func<TItem, TKey> keySelector,
+        Func<TItem, IEnumerable<TKey>> childKeySelector)
     {
         // todo: not done yet
     }
