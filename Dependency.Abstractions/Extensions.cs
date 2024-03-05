@@ -13,7 +13,7 @@ public static class Extensions
 		var (recognized, unrecognized) = Validate(items, keySelector, childKeySelector);
 
 		HashSet<TKey> results = [];
-		
+
 		var rootItems = items.Where(item => !childKeySelector(item).Any())?.ToArray() ?? [];
 		var childItems = items.Except(rootItems).ToArray();
 
@@ -26,7 +26,7 @@ public static class Extensions
 			{
 				var dependencies = childKeySelector(item).Except(unrecognized).ToArray();
 				var key = keySelector(item);
-				
+
 				// this was just a little debug helper during development
 				var missing = dependencies.Except(results).ToArray();
 
@@ -37,7 +37,7 @@ public static class Extensions
 					{
 						// if we have everything, we can stop
 						if (results.Count == recognized.Count) break;
-					}                    
+					}
 				}
 			}
 		}
@@ -60,14 +60,14 @@ public static class Extensions
 	/// need to be excluded from any subsequent analysis
 	/// </summary>
 	public static (IReadOnlyList<TKey> Recognized, IReadOnlyList<TKey> Unrecogized) Validate<TItem, TKey>(
-		IEnumerable<TItem> items, 
+		IEnumerable<TItem> items,
 		Func<TItem, TKey> keySelector,
 		Func<TItem, IEnumerable<TKey>> childKeySelector)
 	{
 		var allReferences = items.SelectMany(childKeySelector).Distinct();
 		var allReferenced = items.Select(keySelector).Distinct();
 
-		return 
+		return
 		(
 			allReferenced.Concat(allReferences.Intersect(allReferenced)).Distinct().ToArray(),
 			allReferences.Except(allReferenced).ToArray()
@@ -93,8 +93,8 @@ public static class Extensions
 				if (child.Equals(key)) throw new ArgumentException($"Circular reference found: {child}");
 				if (items.TryGetValue(child, out var childItem))
 				{
-                    EnsureNoSelfReference(key, childItem);
-                }				
+					EnsureNoSelfReference(key, childItem);
+				}
 			}
 		}
 	}

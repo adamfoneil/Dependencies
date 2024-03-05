@@ -1,5 +1,4 @@
 using Dependency.Abstractions;
-using System.Diagnostics;
 
 namespace Testing;
 
@@ -35,7 +34,7 @@ public class DependencyCases
         Assert.IsTrue(!invalid.Any());
     }
 
-    [TestMethod]    
+    [TestMethod]
     public void WithInvalidKey()
     {
         var projects = new[]
@@ -61,7 +60,7 @@ public class DependencyCases
         ];
 
         Assert.IsTrue(valid.SequenceEqual(expected));
-        Assert.IsTrue(invalid.SequenceEqual([ "Squiggly" ]));
+        Assert.IsTrue(invalid.SequenceEqual(["Squiggly"]));
     }
 
     [TestMethod]
@@ -79,7 +78,7 @@ public class DependencyCases
         }
         catch (ArgumentException exc)
         {
-            Assert.IsTrue(exc.Message.Equals("Circular reference found: A"));            
+            Assert.IsTrue(exc.Message.Equals("Circular reference found: A"));
             return;
         }
 
