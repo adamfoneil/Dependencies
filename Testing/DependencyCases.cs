@@ -48,7 +48,7 @@ public class DependencyCases
             new { Name = "VariousAbstractions", Dependencies = Array.Empty<string>() }
         };
 
-        var actual = projects.ToDependencyOrder(p => p.Name, p => p.Dependencies);
+        var (valid, invalid) = projects.ToDependencyOrder(p => p.Name, p => p.Dependencies);
 
         string[] expected =
         [
@@ -60,8 +60,8 @@ public class DependencyCases
             "WebApp"
         ];
 
-        Assert.IsTrue(actual.Valid.SequenceEqual(expected));
-        Assert.IsTrue(actual.Invalid.SequenceEqual([ "Squiggly" ]));
+        Assert.IsTrue(valid.SequenceEqual(expected));
+        Assert.IsTrue(invalid.SequenceEqual([ "Squiggly" ]));
     }
 
     [TestMethod]
