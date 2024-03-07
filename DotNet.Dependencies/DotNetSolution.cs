@@ -17,18 +17,22 @@ public static class DotNetSolution
     {
         var manager = new AnalyzerManager();
         
-        var solution = SolutionFile.Parse(solutionFile);
+        var solution = SolutionFile.Parse(solutionFile);        
+
         foreach (var project in solution.ProjectsInOrder) 
         {
             var analyzer = manager.GetProject(project.AbsolutePath);
 
-            throw new NotImplementedException("add dependencies to returned item");
+            var references = (project.Dependencies
+                .Select(guid => solution.ProjectsByGuid.TryGetValue(guid, out var p) ? p.ProjectName : string.Empty))
+                .Where(val => !string.IsNullOrEmpty(val));
 
             yield return new Project()
             {
                 Name = project.ProjectName,
-                Path = project.AbsolutePath                
+                Path = project.AbsolutePath,
+                ProjectReferences = references.ToArray(),                
             };
-        }        
+        }
     }    
 }

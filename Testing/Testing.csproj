@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Dependency.Abstractions\Dependency.Abstractions.csproj" />
+    <ProjectReference Include="..\DotNet.Dependencies\DotNet.Dependencies.csproj" />
   </ItemGroup>
 
   <ItemGroup>
