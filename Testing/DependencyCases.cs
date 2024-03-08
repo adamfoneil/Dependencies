@@ -64,6 +64,26 @@ public class DependencyCases
     }
 
     [TestMethod]
+    public void ReverseLookup()
+    {
+        var projects = new[]
+        {
+            new { Name = "WebApp", Dependencies = new[] { "Logger", "Services", "DomainModels" }},
+            new { Name = "Services", Dependencies = new[] { "Logger", "DomainModels" }},
+            new { Name = "DomainModels", Dependencies = new[] { "VariousAbstractions" }},
+            new { Name = "PublicApi", Dependencies = new[] { "Services" }},
+            new { Name = "Logger", Dependencies = Array.Empty<string>() },
+            new { Name = "VariousAbstractions", Dependencies = Array.Empty<string>() }
+        };
+
+        var lookup = projects.ToReverseLookup(p => p.Name, p => p.Dependencies);
+
+        Assert.IsTrue(lookup["Logger"].SequenceEqual([ "WebApp", "Services" ]));
+        Assert.IsTrue(lookup["VariousAbstractions"].SequenceEqual([ "DomainModels" ]));
+        Assert.IsTrue(lookup["Services"].SequenceEqual(["WebApp", "PublicApi"]));
+    }
+
+    [TestMethod]
     public void CircularCase()
     {
         var items = new[]

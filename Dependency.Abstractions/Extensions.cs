@@ -1,8 +1,10 @@
-﻿namespace Dependency.Abstractions;
+﻿using Microsoft.VisualBasic;
+
+namespace Dependency.Abstractions;
 
 public static class Extensions
 {
-	public static (IReadOnlyList<TKey> Valid, IReadOnlyList<TKey> Invalid) ToDependencyOrder<TItem, TKey>(
+	public static (IReadOnlyList<TKey> Recognized, IReadOnlyList<TKey> Unrecognized) ToDependencyOrder<TItem, TKey>(
 		this IEnumerable<TItem> items,
 		Func<TItem, TKey> keySelector,
 		Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull
@@ -52,14 +54,23 @@ public static class Extensions
 		this IEnumerable<TItem> items,
 		Func<TItem, TKey> keySelector,
 		Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull =>
-		ToDependencyOrder(items, keySelector, childKeySelector).Valid;
+		ToDependencyOrder(items, keySelector, childKeySelector).Recognized;
 
-	/// <summary>
-	/// a dependency graph may have a combination of valid or "recognized" keys,
-	/// along with a set of possible invalid or "unrecognized" keys. The unrecognized keys
-	/// need to be excluded from any subsequent analysis
-	/// </summary>
-	public static (IReadOnlyList<TKey> Recognized, IReadOnlyList<TKey> Unrecogized) Validate<TItem, TKey>(
+	public static ILookup<TKey, TKey> ToReverseLookup<TKey, TItem>(
+        this IEnumerable<TItem> items,
+        Func<TItem, TKey> keySelector,
+        Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull =>
+        items
+            .SelectMany(item => childKeySelector(item), (item, child) => new { Item = item, Child = child })
+            .ToLookup(pair => pair.Child, pair => keySelector(pair.Item));
+
+
+    /// <summary>
+    /// a dependency graph may have a combination of valid or "recognized" keys,
+    /// along with a set of possible invalid or "unrecognized" keys. The unrecognized keys
+    /// need to be excluded from any subsequent analysis
+    /// </summary>
+    public static (IReadOnlyList<TKey> Recognized, IReadOnlyList<TKey> Unrecogized) Validate<TItem, TKey>(
 		IEnumerable<TItem> items,
 		Func<TItem, TKey> keySelector,
 		Func<TItem, IEnumerable<TKey>> childKeySelector)
@@ -72,7 +83,7 @@ public static class Extensions
 			allReferenced.Concat(allReferences.Intersect(allReferenced)).Distinct().ToArray(),
 			allReferences.Except(allReferenced).ToArray()
 		);
-	}
+	}	
 
 	/// <summary>
 	/// circular dependencies mess everything up, so you have to catch those before doing anything
