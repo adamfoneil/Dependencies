@@ -41,7 +41,7 @@ Notice it returns two lists of `recognized` and `unrecognized` results. You can 
 
 I had some issues with an infinite loop [here](https://github.com/adamfoneil/Dependencies/blob/master/Dependency.Abstractions/Extensions.cs#L23) when, during development, I misspelled one of my ficticious dependencies. This prevented my result list from ever reaching its expected count. It turned out that [excluding the unrecognized](https://github.com/adamfoneil/Dependencies/blob/master/Dependency.Abstractions/Extensions.cs#L27) dependencies kept that from happening.
 
-Another thing needed to prevent infinite looping is detecting circularity, which I do with this method [ThrowIfCircular](https://github.com/adamfoneil/Dependencies/blob/master/Dependency.Abstractions/Extensions.cs#L80).
+Another thing needed to prevent infinite looping is detecting circularity, which I do with this method [ThrowIfCircular](https://github.com/adamfoneil/Dependencies/blob/master/Dependency.Abstractions/Extensions.cs#L98).
 
 # Reverse Lookups
 There are a couple methods for determining where a dependency is used. I call this a "reverse lookup":
