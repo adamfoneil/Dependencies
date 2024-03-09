@@ -10,6 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Dapper.CX.json" />
+    <None Remove="Resources\Dapper.Entities.json" />
+    <None Remove="Resources\Hs5.json" />
+    <None Remove="Resources\LiteInvoice3.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Dapper.CX.json" />
+    <EmbeddedResource Include="Resources\Dapper.Entities.json" />
+    <EmbeddedResource Include="Resources\Hs5.json" />
+    <EmbeddedResource Include="Resources\LiteInvoice3.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
@@ -23,10 +37,6 @@
 
   <ItemGroup>
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

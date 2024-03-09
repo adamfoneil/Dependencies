@@ -1,0 +1,117 @@
+[
+  {
+    "Name": "Tests",
+    "Path": "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\Tests\\Tests.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.Server\\LiteInvoice.Server.csproj"
+    ],
+    "PackageReferences": [
+      "Microsoft.Extensions.Configuration",
+      "Microsoft.Extensions.Configuration.Binder",
+      "Microsoft.Extensions.Logging",
+      "Microsoft.NET.Test.Sdk",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "coverlet.collector"
+    ]
+  },
+  {
+    "Name": "Radzen.Components",
+    "Path": "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\Radzen.Components\\Radzen.Components.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "Microsoft.AspNetCore.Components.Web",
+      "Radzen.Blazor"
+    ]
+  },
+  {
+    "Name": "LiteInvoice.ServerApp",
+    "Path": "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.ServerApp\\LiteInvoice.ServerApp.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.Server\\LiteInvoice.Server.csproj",
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\Radzen.Components\\Radzen.Components.csproj"
+    ],
+    "PackageReferences": [
+      "Dapper.Entities.PostgreSql",
+      "Dapper.QX",
+      "Hashids.net",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "Microsoft.EntityFrameworkCore.Tools",
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets",
+      "Npgsql.EntityFrameworkCore.PostgreSQL",
+      "Radzen.Blazor"
+    ]
+  },
+  {
+    "Name": "WebApp",
+    "Path": "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\WebApp\\WebApp\\WebApp.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.Entities\\LiteInvoice.Entities.csproj",
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.Server\\LiteInvoice.Server.csproj",
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\Radzen.Components\\Radzen.Components.csproj",
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\WebApp\\WebApp.Client\\WebApp.Client.csproj"
+    ],
+    "PackageReferences": [
+      "Dapper.Entities.PostgreSql",
+      "Dapper.QX",
+      "Hashids.net",
+      "Microsoft.AspNetCore.Components.WebAssembly.Server",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "Microsoft.EntityFrameworkCore.SqlServer",
+      "Microsoft.EntityFrameworkCore.Tools",
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets",
+      "Npgsql.EntityFrameworkCore.PostgreSQL",
+      "Radzen.Blazor"
+    ]
+  },
+  {
+    "Name": "WebApp.Client",
+    "Path": "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\WebApp\\WebApp.Client\\WebApp.Client.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.Entities\\LiteInvoice.Entities.csproj",
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\Radzen.Components\\Radzen.Components.csproj"
+    ],
+    "PackageReferences": [
+      "Microsoft.AspNetCore.Components.WebAssembly",
+      "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "Radzen.Blazor",
+      "Refit",
+      "Refit.HttpClientFactory"
+    ]
+  },
+  {
+    "Name": "LiteInvoice.Entities",
+    "Path": "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.Entities\\LiteInvoice.Entities.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "Dapper.Entities.Abstractions",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "Microsoft.EntityFrameworkCore.Design",
+      "Microsoft.Extensions.Configuration",
+      "Microsoft.Extensions.Configuration.Json",
+      "Npgsql.EntityFrameworkCore.PostgreSQL"
+    ]
+  },
+  {
+    "Name": "LiteInvoice.Server",
+    "Path": "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.Server\\LiteInvoice.Server.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\LiteInvoice3\\LiteInvoice.Entities\\LiteInvoice.Entities.csproj"
+    ],
+    "PackageReferences": [
+      "Dapper.Entities.Abstractions",
+      "Dapper.Entities.PostgreSql",
+      "Dapper.QX",
+      "Hashids.net",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "Microsoft.EntityFrameworkCore",
+      "Microsoft.EntityFrameworkCore.Design",
+      "Microsoft.Extensions.Configuration.Abstractions",
+      "Microsoft.Extensions.Configuration.Json",
+      "Microsoft.Extensions.Identity.Stores",
+      "Npgsql.EntityFrameworkCore.PostgreSQL"
+    ]
+  }
+]

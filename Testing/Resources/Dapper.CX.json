@@ -1,0 +1,133 @@
+[
+  {
+    "Name": "Dapper.CX.Base",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Dapper.CX.Base\\Dapper.CX.Base.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "NETStandard.Library",
+      "AO.Models",
+      "Dapper",
+      "Microsoft.CSharp",
+      "System.ComponentModel.Annotations"
+    ]
+  },
+  {
+    "Name": "Dapper.CX.SqlServer",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Dapper.CX.SqlServer\\Dapper.CX.SqlServer.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "NETStandard.Library",
+      "AO.Models",
+      "Dapper",
+      "Microsoft.Data.SqlClient"
+    ]
+  },
+  {
+    "Name": "Tests.SqlServer",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Tests.SqlServer\\Tests.SqlServer.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Dapper.CX.Base\\Dapper.CX.Base.csproj"
+    ],
+    "PackageReferences": [
+      "Microsoft.NET.Test.Sdk",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "SqlServer.LocalDb.Testing"
+    ]
+  },
+  {
+    "Name": "Tests.Base",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Tests.Base\\Tests.Base.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Dapper.CX.Base\\Dapper.CX.Base.csproj"
+    ],
+    "PackageReferences": [
+      "Microsoft.NET.Test.Sdk",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "coverlet.collector",
+      "SqlServer.LocalDb.Testing"
+    ]
+  },
+  {
+    "Name": "Tests.ChangeTracking",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Tests.ChangeTracking\\Tests.ChangeTracking.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Dapper.CX.SqlServer\\Dapper.CX.SqlServer.csproj"
+    ],
+    "PackageReferences": [
+      "AO.ModelSync.Library",
+      "Dapper",
+      "Microsoft.NET.Test.Sdk",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "coverlet.collector",
+      "SqlServer.LocalDb.Testing"
+    ]
+  },
+  {
+    "Name": "Dapper.CX.SqlServer.AspNetCore",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Dapper.CX.SqlServer.AspNetCore\\Dapper.CX.SqlServer.AspNetCore.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "AO.Models",
+      "Dapper",
+      "Dapper.CX.SqlServer",
+      "Dapper.QX",
+      "Microsoft.Data.SqlClient"
+    ]
+  },
+  {
+    "Name": "SampleApp.RazorPages",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\SampleApp.RazorPages\\SampleApp.RazorPages.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Dapper.CX.SqlServer.AspNetCore\\Dapper.CX.SqlServer.AspNetCore.csproj",
+      "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\SampleApp.Services\\SampleApp.Services.csproj"
+    ],
+    "PackageReferences": [
+      "AO.ModelSync.Library",
+      "GridEditor.RazorPages",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "Microsoft.AspNetCore.Identity.UI",
+      "Microsoft.EntityFrameworkCore.SqlServer",
+      "Microsoft.EntityFrameworkCore.Tools"
+    ]
+  },
+  {
+    "Name": "SampleApp.Models",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\SampleApp.Models\\SampleApp.Models.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "NETStandard.Library",
+      "AO.Models"
+    ]
+  },
+  {
+    "Name": "SampleApp.Services",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\SampleApp.Services\\SampleApp.Services.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "NETStandard.Library",
+      "AO.Models",
+      "Dapper.CX.SqlServer",
+      "Dapper.QX"
+    ]
+  },
+  {
+    "Name": "Tests.CrudService",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Tests.CrudService\\Tests.CrudService.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Dapper.CX\\Dapper.CX.SqlServer\\Dapper.CX.SqlServer.csproj"
+    ],
+    "PackageReferences": [
+      "AO.ModelSync.Library",
+      "Dapper.QX",
+      "Microsoft.NET.Test.Sdk",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "coverlet.collector",
+      "SqlServer.LocalDb.Testing"
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "Name": "Dapper.Entities",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Dapper.Entities\\Dapper.Entities.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "Dapper",
+      "Dapper.Entities.Abstractions",
+      "Microsoft.Extensions.Logging.Abstractions"
+    ]
+  },
+  {
+    "Name": "Dapper.Entities.SqlServer",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Dapper.Entities.SqlServer\\Dapper.Entities.SqlServer.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "Dapper",
+      "Dapper.Entities.Abstractions",
+      "Microsoft.Data.SqlClient",
+      "Microsoft.Extensions.Logging.Abstractions"
+    ]
+  },
+  {
+    "Name": "Dapper.Entities.Abstractions",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Dapper.Entities.Abstractions\\Dapper.Entities.Abstractions.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": []
+  },
+  {
+    "Name": "Testing.Common",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Testing.Common\\Testing.Common.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Dapper.Entities.Abstractions\\Dapper.Entities.Abstractions.csproj"
+    ],
+    "PackageReferences": [
+      "Microsoft.Extensions.Logging",
+      "Microsoft.Extensions.Logging.Console",
+      "Microsoft.NET.Test.Sdk",
+      "Microsoft.SqlServer.DacFx",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "coverlet.collector",
+      "SqlServer.LocalDb.Testing"
+    ]
+  },
+  {
+    "Name": "Testing.SqlServer",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Testing.SqlServer\\Testing.SqlServer.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Dapper.Entities.SqlServer\\Dapper.Entities.SqlServer.csproj",
+      "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Testing.Common\\Testing.Common.csproj"
+    ],
+    "PackageReferences": [
+      "Microsoft.NET.Test.Sdk",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "coverlet.collector",
+      "Serilog.Extensions.Logging",
+      "Serilog.Sinks.Debug"
+    ]
+  },
+  {
+    "Name": "Dapper.Entities.PostgreSql",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Dapper.Entities.PostgreSql\\Dapper.Entities.PostgreSql.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "Dapper",
+      "Dapper.Entities.Abstractions",
+      "Microsoft.Extensions.Logging.Abstractions",
+      "Npgsql"
+    ]
+  },
+  {
+    "Name": "Testing.PostgreSql",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Testing.PostgreSql\\Testing.PostgreSql.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Dapper.Entities.PostgreSql\\Dapper.Entities.PostgreSql.csproj",
+      "C:\\Users\\adamo\\source\\repos\\Dapper.Entities\\Testing.Common\\Testing.Common.csproj"
+    ],
+    "PackageReferences": [
+      "Microsoft.NET.Test.Sdk",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "coverlet.collector"
+    ]
+  }
+]

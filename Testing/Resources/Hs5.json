@@ -1,0 +1,156 @@
+[
+  {
+    "Name": "Hs5.Database",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Database\\Hs5.Database.csproj",
+    "ProjectReferences": [],
+    "PackageReferences": [
+      "NETStandard.Library",
+      "AO.Models"
+    ]
+  },
+  {
+    "Name": "Hs5.Services",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Services\\Hs5.Services.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Database\\Hs5.Database.csproj"
+    ],
+    "PackageReferences": [
+      "AO.AppointmentReminders.Client",
+      "AO.BackgroundService.Extensions",
+      "AO.ConnectionStrings",
+      "AO.CopyObject",
+      "AO.Dapper.Repository.SqlServer",
+      "AO.DataGen",
+      "AO.Mailgun",
+      "AO.PayPalExtensions",
+      "AO.QuestPDF.Util",
+      "AO.RazorToString",
+      "AO.Rollup",
+      "AO.StringId",
+      "Azure.Storage.Blobs",
+      "ClosedXML",
+      "Dapper.QX",
+      "DataTables.Library",
+      "Dommel",
+      "Hashids.net",
+      "Microsoft.AspNetCore.Components.Authorization",
+      "Microsoft.Data.SqlClient",
+      "Microsoft.Extensions.Caching.Abstractions",
+      "Microsoft.Extensions.Hosting.Abstractions",
+      "Microsoft.Extensions.Http",
+      "PreMailer.Net",
+      "QuestPDF",
+      "Refit",
+      "Twilio"
+    ]
+  },
+  {
+    "Name": "Hs5.Test",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Test\\Hs5.Test.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Services\\Hs5.Services.csproj"
+    ],
+    "PackageReferences": [
+      "Dapper.QX",
+      "Microsoft.Data.SqlClient",
+      "Microsoft.Extensions.Caching.Memory",
+      "Microsoft.Extensions.Caching.SqlServer",
+      "Microsoft.Extensions.Configuration",
+      "Microsoft.Extensions.Configuration.Binder",
+      "Microsoft.Extensions.Configuration.Json",
+      "Microsoft.NET.Test.Sdk",
+      "MSTest.TestAdapter",
+      "MSTest.TestFramework",
+      "coverlet.collector"
+    ]
+  },
+  {
+    "Name": "Hs5.CLI",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.CLI\\Hs5.CLI.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Database\\Hs5.Database.csproj",
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Services\\Hs5.Services.csproj"
+    ],
+    "PackageReferences": [
+      "AO.Dapper.Repository.SqlServer",
+      "AO.DataGen",
+      "Excel2SqlServer",
+      "Microsoft.Extensions.Caching.SqlServer",
+      "Microsoft.Extensions.Configuration",
+      "Microsoft.Extensions.Configuration.Json",
+      "Microsoft.Extensions.Configuration.UserSecrets",
+      "Microsoft.Extensions.Logging.Console",
+      "SqlServer.Util.Library"
+    ]
+  },
+  {
+    "Name": "Hs5.RadzenBlazor",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.RadzenBlazor\\Hs5.RadzenBlazor.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Services\\Hs5.Services.csproj"
+    ],
+    "PackageReferences": [
+      "AO.ConnectionStrings",
+      "AO.CopyObject",
+      "AO.GitHubApi",
+      "AO.Mailgun",
+      "AO.PayPalComponents.RCL",
+      "AO.PayPalExtensions",
+      "AO.RazorToString",
+      "AO.UserVoice.RCL",
+      "BlazorDownloadFile",
+      "AO.QuestPDF.Util",
+      "Blazored.Typeahead",
+      "ClosedXML",
+      "DataTables.Library",
+      "Elmah.Io.AspNetCore.ExtensionsLogging",
+      "Elmah.Io.Extensions.Logging",
+      "Majorsoft.Blazor.Components.Collapse",
+      "Markdig",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "Microsoft.AspNetCore.Identity.UI",
+      "Microsoft.Azure.SignalR",
+      "Microsoft.EntityFrameworkCore.SqlServer",
+      "Microsoft.EntityFrameworkCore.Tools",
+      "Microsoft.Extensions.Caching.SqlServer",
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design",
+      "QuestPDF",
+      "Radzen.Blazor",
+      "Sgbj.Cron.CronTimer"
+    ]
+  },
+  {
+    "Name": "SpayWise",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Hs5\\SpayWise\\SpayWise\\SpayWise.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Database\\Hs5.Database.csproj",
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Services\\Hs5.Services.csproj",
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\SpayWise\\SpayWise.Client\\SpayWise.Client.csproj"
+    ],
+    "PackageReferences": [
+      "AO.ConnectionStrings",
+      "AO.Radzen.Components",
+      "Microsoft.AspNetCore.Components.WebAssembly.Server",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore",
+      "Microsoft.Azure.SignalR",
+      "Microsoft.EntityFrameworkCore.SqlServer",
+      "Microsoft.EntityFrameworkCore.Tools",
+      "Radzen.Blazor"
+    ]
+  },
+  {
+    "Name": "SpayWise.Client",
+    "Path": "C:\\Users\\adamo\\source\\repos\\Hs5\\SpayWise\\SpayWise.Client\\SpayWise.Client.csproj",
+    "ProjectReferences": [
+      "C:\\Users\\adamo\\source\\repos\\Hs5\\Hs5.Database\\Hs5.Database.csproj"
+    ],
+    "PackageReferences": [
+      "AO.Radzen.Components",
+      "Microsoft.AspNetCore.Components.WebAssembly",
+      "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "Radzen.Blazor"
+    ]
+  }
+]
