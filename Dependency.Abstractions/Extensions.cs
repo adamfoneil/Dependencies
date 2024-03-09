@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace Dependency.Abstractions;
+﻿namespace Dependency.Abstractions;
 
 public static class Extensions
 {
@@ -56,14 +54,23 @@ public static class Extensions
 		Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull =>
 		ToDependencyOrder(items, keySelector, childKeySelector).Recognized;
 
-	public static ILookup<TKey, TKey> ToReverseLookup<TKey, TItem>(
+	public static ILookup<TKey, TItem> ToReverseLookupItems<TKey, TItem>(
+        this IEnumerable<TItem> items,        
+        Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull =>
+		ReverseLookupPairing(items,  childKeySelector)       
+		.ToLookup(pair => pair.Child, pair => pair.Item);
+
+    public static ILookup<TKey, TKey> ToReverseLookup<TKey, TItem>(
         this IEnumerable<TItem> items,
         Func<TItem, TKey> keySelector,
         Func<TItem, IEnumerable<TKey>> childKeySelector) where TKey : notnull =>
-        items
-            .SelectMany(item => childKeySelector(item), (item, child) => new { Item = item, Child = child })
-            .ToLookup(pair => pair.Child, pair => keySelector(pair.Item));
-
+        ReverseLookupPairing(items, childKeySelector)
+		.ToLookup(pair => pair.Child, pair => keySelector(pair.Item));
+	
+	private static IEnumerable<(TItem Item, TKey Child)> ReverseLookupPairing<TItem, TKey>(
+        IEnumerable<TItem> items,
+        Func<TItem, IEnumerable<TKey>> childKeySelector) =>
+		items.SelectMany(item => childKeySelector(item), (item, child) => (item, child));
 
     /// <summary>
     /// a dependency graph may have a combination of valid or "recognized" keys,
