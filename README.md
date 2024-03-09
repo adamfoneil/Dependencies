@@ -47,6 +47,7 @@ Another thing needed to prevent infinite looping is detecting circularity, which
 There are a couple methods for determining where a dependency is used. I call this a "reverse lookup":
 - [ToReverseLookup](https://github.com/adamfoneil/Dependencies/blob/master/Dependency.Abstractions/Extensions.cs#L63) gets just the `TKey`s
 - [ToReverseLookupItems](https://github.com/adamfoneil/Dependencies/blob/master/Dependency.Abstractions/Extensions.cs#L57) gets the full `TItem`s
+
 See the [test](https://github.com/adamfoneil/Dependencies/blob/master/Testing/DependencyCases.cs#L67) to get a sense of what this is doing.
 
 # Testing Approach
