@@ -7,7 +7,13 @@ public class Project
 {
     public string Name { get; set; } = default!;
     public string Path { get; set; } = default!;
+    /// <summary>
+    /// this is critical for testing
+    /// </summary>
     public string[] ProjectReferences { get; set; } = [];
+    /// <summary>
+    /// didn't need this for testing, but I was just curious
+    /// </summary>
     public string[] PackageReferences { get; set; } = [];
 }
 
@@ -22,16 +28,14 @@ public static class DotNetSolution
         foreach (var project in solution.ProjectsInOrder) 
         {
             var analyzer = manager.GetProject(project.AbsolutePath);
-
-            var references = (project.Dependencies
-                .Select(guid => solution.ProjectsByGuid.TryGetValue(guid, out var p) ? p.ProjectName : string.Empty))
-                .Where(val => !string.IsNullOrEmpty(val));
+            var info = analyzer.Build().First(); // assumes single target
 
             yield return new Project()
             {
                 Name = project.ProjectName,
                 Path = project.AbsolutePath,
-                ProjectReferences = references.ToArray(),                
+                ProjectReferences = info.ProjectReferences.ToArray(),
+                PackageReferences = info.PackageReferences.Select(kp => kp.Key).ToArray()
             };
         }
     }    
