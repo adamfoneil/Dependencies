@@ -19,6 +19,19 @@ public class Project
 
 public static class DotNetSolution
 {
+    public static (bool Success, string? Message, IEnumerable<Project> Results) TryAnalyze(string solutionFile)
+    {
+        try
+        {
+            var results = Analyze(solutionFile).ToArray();
+            return (true, default, results);
+        }
+        catch (Exception exc)
+        {
+            return (false, exc.Message, []);
+        }
+    }
+
     public static IEnumerable<Project> Analyze(string solutionFile)
     {
         var manager = new AnalyzerManager();

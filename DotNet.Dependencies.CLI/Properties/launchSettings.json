@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DotNet.Dependencies.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\adamo\\source\\repos\""
+    }
+  }
+}
