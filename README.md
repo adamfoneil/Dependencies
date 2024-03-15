@@ -66,3 +66,10 @@ var dependencyOrder = projects.ToValidDependencyOrder(
 ```
 
 Notice I use `Select` on the existing `ProjectReferences`. This is because the `ProjectReferences` contain the full path to the referenced project. I needed to extract just the file name portion so the `ToValidDependencyOrder` method would be matching project `Name` to `Name` instead of a file path, which would never match.
+
+# Further Thoughts
+A work colleague figured out that you can get the build order from Visual Studio via the Project Build Order dialog as well as by by examining the output from the Clean command in the right way.
+
+![image](https://github.com/adamfoneil/Dependencies/assets/4549398/7d85da0e-f75d-49a2-b007-7bbec5e0eb2e)
+
+I should've maybe noticed this, but in the end, I wanted a generic approach to any dependency graph modeled in code.
